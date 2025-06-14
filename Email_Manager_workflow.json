@@ -1,0 +1,2253 @@
+{
+  "name": "Email Manager - georgewallden96",
+  "nodes": [
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "[Agent-Maybe Important (Marketing)] ",
+        "emailType": "text",
+        "message": "={{ $json.message.content.Content }}",
+        "options": {
+          "senderName": "Agent"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        980,
+        700
+      ],
+      "id": "4318e9dd-3f16-4deb-b821-7a2aa57286ab",
+      "name": "Send Email to Outlook (Maybe Important)5",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Incoming",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incoming Source": "={{ $json.sender }}"
+          },
+          "matchingColumns": [
+            "Blacklisted Sources"
+          ],
+          "schema": [
+            {
+              "id": "Incoming Source",
+              "displayName": "Incoming Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1180,
+        600
+      ],
+      "id": "49499dd3-0ac8-4d3e-852f-fa6704b6c4bf",
+      "name": "Add Emails to Incoming10",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "[Agent-Important (Via Maybe)] ",
+        "message": "={{ $json.message.content.content }}",
+        "options": {
+          "senderName": "Agent"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        1660
+      ],
+      "id": "ce946c2a-b663-4c36-b4f2-8b22972414df",
+      "name": "Send Email to Outlook (Important)6",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "=[Agent-Maybe Important]  {{ $('Important/Not Quite1').item.json.message.content.subject }}",
+        "emailType": "text",
+        "message": "={{ $('Important/Not Quite1').item.json.message.content.content }}",
+        "options": {
+          "senderName": "Agent"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        860,
+        1820
+      ],
+      "id": "ab91f02a-0470-415b-960d-9a1897b8f5b4",
+      "name": "Send Email to Outlook (Maybe Important)1",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 20,
+        "filters": {
+          "readStatus": "unread"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -3860,
+        1260
+      ],
+      "id": "16697d7a-c798-42a1-8d5e-bd3c86570d48",
+      "name": "Get Unread from georgewallden96",
+      "webhookId": "d2fcc23a-76ca-4dae-8642-05123862beb0",
+      "executeOnce": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1210139273,
+          "mode": "list",
+          "cachedResultName": "Incoming",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=1210139273"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incoming Source": "={{ $json.sender }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Incoming Source",
+              "displayName": "Incoming Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        600,
+        1180
+      ],
+      "id": "fb6b1e02-51fa-4f8d-822c-df9c9cebedb4",
+      "name": "Add Emails to Incoming7",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1210139273,
+          "mode": "list",
+          "cachedResultName": "Incoming",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=1210139273"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incoming Source": "={{ $json.sender }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Incoming Source",
+              "displayName": "Incoming Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        220,
+        1400
+      ],
+      "id": "1bb60855-0870-4f45-be09-35bba968bd8a",
+      "name": "Add Emails to Incoming6",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1210139273,
+          "mode": "list",
+          "cachedResultName": "Incoming",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=1210139273"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incoming Source": "={{ $('Important/Not Quite1').item.json.message.content.SenderId }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Incoming Source",
+              "displayName": "Incoming Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        660,
+        1660
+      ],
+      "id": "2fb137fd-f3f0-4f1b-a134-3da6a315f2f9",
+      "name": "Add Emails to Incoming5",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 734620047,
+          "mode": "list",
+          "cachedResultName": "Whitelisted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=734620047"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Whitelisted Sources": "={{ $('Evaluate Remaining Emails1').item.json.sender }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Whitelisted Sources",
+              "displayName": "Whitelisted Sources",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        220,
+        540
+      ],
+      "id": "cb92b757-f511-4a09-b3ba-0aa798750a5d",
+      "name": "Add Emails to Whitelisted3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 734620047,
+          "mode": "list",
+          "cachedResultName": "Whitelisted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=734620047"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Whitelisted Sources": "={{ $('Evaluate Remaining Emails1').item.json.sender }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Whitelisted Sources",
+              "displayName": "Whitelisted Sources",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        220,
+        40
+      ],
+      "id": "811cf177-4902-417c-a391-dc9660937883",
+      "name": "Add Emails to Whitelisted2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const whitelist = $('Get Whitelisted1')\n  .all()\n  .map(item => item.json['Whitelisted Sources'])\n  .filter(Boolean)\n  .map(entry => entry.toLowerCase().trim());\n\nconst seen = new Set();\nconst result = [];\n\nfor (const item of $input.all()) {\n  const email = item.json;\n\n  // Parse and normalize sender\n  const rawSender = email.sender || '';\n  const match = rawSender.match(/<([^>]+)>/);\n  const sender = match ? match[1].toLowerCase().trim() : rawSender.toLowerCase().trim();\n\n  const key = `${email.threadId || email.thread_id || email.id}`;\n\n  // ✅ Only push if this sender is in the whitelist\n  if (whitelist.includes(sender) && !seen.has(key)) {\n    seen.add(key);\n    result.push({ json: email });\n  }\n}\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1820,
+        1160
+      ],
+      "id": "1b3e8eab-bc13-4144-a906-631b0fef4517",
+      "name": "Get Just Whitelisted Emails1",
+      "alwaysOutputData": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get full filtered (non-blacklisted) email list\nconst allEmails = $('Filter Blacklisted1').all();\n\n// Get whitelist entries\nconst whitelist = $('Get Whitelisted1')\n  .all()\n  .map(item => item.json['Whitelisted Sources'])\n  .filter(Boolean)\n  .map(entry => entry.toLowerCase().trim());\n\nconst seen = new Set();\nconst result = [];\n\nfor (const item of allEmails) {\n  const email = item.json;\n\n  // Normalize sender\n  const rawSender = email.sender || '';\n  const match = rawSender.match(/<([^>]+)>/);\n  const sender = match ? match[1].toLowerCase().trim() : rawSender.toLowerCase().trim();\n\n  const key = `${email.threadId || email.thread_id || email.id}`;\n\n  // ✅ Push only if NOT in whitelist and not already seen\n  if (!whitelist.includes(sender) && !seen.has(key)) {\n    seen.add(key);\n    result.push({ json: email });\n  }\n}\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        1140
+      ],
+      "id": "095b8830-c099-4fea-8a49-d5ef0ae98d2d",
+      "name": "Get Remaining Emails (No whitlisted/blacklisted)1"
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "=[Agent-Important] - {{ $('Get Just Whitelisted Emails1').item.json.Subject }}",
+        "message": "={{ $('Get Just Whitelisted Emails1').item.json.snippet }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1100,
+        840
+      ],
+      "id": "346ee8e4-f4e8-4215-807a-f6f388b94c96",
+      "name": "Send Email to Outlook (Important)5",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1320,
+        960
+      ],
+      "id": "ad56af81-2d72-487a-bed2-434ebbc62310",
+      "name": "Mark Important As Read3",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.Subject }} {{ $json.snippet }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Internal",
+              "description": "=Emails from any variation of gwallden, or georgewallden, walldeg2, etc\n"
+            },
+            {
+              "category": "Important",
+              "description": "=Emails from doctors, about appointments/confirmations, account creation confirmations, in general anything that makes sense to be considered important."
+            },
+            {
+              "category": "Promotions",
+              "description": "=Emails related to marketing campaigns, promotional offers, newsletters, or business updates from partners. Typically these emails contain content aimed at engaging an audience or updating them on promotions. Keywords: newsletter, promotion, offer, sale, campaign, marketing, launch\n"
+            },
+            {
+              "category": "Admin/Finance",
+              "description": "=Emails related to admin or financial matters, such as invoices, billing statements, payment reminders, or expense reports. Anything involving transactions or accounting should fall under this label.  Keywords: invoice, payment, billing, receipt, financial, expense, account\n"
+            },
+            {
+              "category": "Customer Support",
+              "description": "Emails related to ongoing service requests, feedback, support tickets, and inquiries. Keywords: request, inquiry, support, question, follow-up, feedback"
+            },
+            {
+              "category": "Maybe Important",
+              "description": "Anything that doesnt really  fit in any of the other categories that it is not as clear whether it is important or not"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        1140
+      ],
+      "id": "b062dca3-5cbe-4676-ac86-797bcbedaa90",
+      "name": "Evaluate Remaining Emails1",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const blacklistedSources = $input\n  .all()\n  .map((item) => item.json[\"Blacklisted Sources\"]);\nconst senders = $(\"Extract Senders1\")\n  .all()\n  .map((item) => item.json);\n\nconst filteredRecords = senders.filter(\n  (sender) => blacklistedSources.includes(sender.sender),\n);\n\nif (filteredRecords.length === 0) {\n  return [\n    {\n      json: {\n        id: \"\",\n        threadId: \"\",\n        snippet: \"\",\n        payload: {\n          mimeType: \"\",\n        },\n        sizeEstimate: \"\",\n        historyId: \"\",\n        internalDate: \"\",\n        labels: [],\n        Subject: \"\",\n        From: \"\",\n        To: \"\",\n        sender: \"\",\n        subject: \"\",\n      },\n    },\n  ];\n}\n\nreturn filteredRecords;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3020,
+        1220
+      ],
+      "id": "a6685b3b-610b-4d54-903a-cb82bac58c65",
+      "name": "Separate Blacklisted1",
+      "alwaysOutputData": false,
+      "retryOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "SPAM"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -2760,
+        1020
+      ],
+      "id": "d2102e1c-a45e-4c11-b457-673136327592",
+      "name": "Gmail1",
+      "webhookId": "49837aaa-5591-4a27-997a-1c916a04e368",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -2560,
+        1020
+      ],
+      "id": "f97dc2b4-6417-47d3-b586-112010a9da62",
+      "name": "Mark Blacklisted As read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "=[Agent-Internal] - {{ ($json.subject ?? '').toString().trim() }}",
+        "emailType": "text",
+        "message": "={{ ($json.snippet ?? '').toString().trim() }} ",
+        "options": {
+          "senderName": "Agent"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        140
+      ],
+      "id": "0aa03677-4697-4f5a-b86b-b40674f80a1e",
+      "name": "Send Email to Outlook (Internal)1",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "=[Agent-Important] {{ ($json.subject ?? '').toString().trim() }}",
+        "message": "={{ ($json.snippet ?? '').toString().trim() }} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        620
+      ],
+      "id": "e634de2a-7048-4846-9320-d430c91bd5c2",
+      "name": "Send Email to Outlook (Important)3",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "[Agent-Finance] ",
+        "emailType": "text",
+        "message": "={{ $json.snippet }}",
+        "options": {
+          "senderName": "Agent"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        380,
+        1260
+      ],
+      "id": "befe7af4-1869-4961-b54c-3c12cd450e46",
+      "name": "Send Email to Outlook (Finance)1",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "georgewallden@outlook.com",
+        "subject": "[Agent-CustomerSupport] ",
+        "message": "test",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        1480
+      ],
+      "id": "81a85b23-cdae-431e-8555-94a5b195de78",
+      "name": "Send Email to Outlook (Customer Support)1",
+      "webhookId": "9150f469-3c6e-44bd-87c9-ddceccdc57c8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08UNSFLSG5",
+          "mode": "list",
+          "cachedResultName": "reademails_new_maybe_pile_emails"
+        },
+        "text": "=New Email Source(s) filed under maybe:",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1060,
+        1720
+      ],
+      "id": "760cf91b-2669-4471-865b-db881979fb8f",
+      "name": "Send message of new Email source under maybe1",
+      "webhookId": "d8b860b4-9be8-494d-bd83-5d000e8926c4",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1210139273,
+          "mode": "list",
+          "cachedResultName": "Incoming",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=1210139273"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Incoming Source": "={{ $json.message.content.content }}"
+          },
+          "matchingColumns": [
+            "Incoming Source"
+          ],
+          "schema": [
+            {
+              "id": "Incoming Source",
+              "displayName": "Incoming Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        660,
+        1820
+      ],
+      "id": "7de14733-dfb7-411a-aede-a26c41e0ed79",
+      "name": "Add Emails to Incoming4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 66289408,
+          "mode": "list",
+          "cachedResultName": "Blacklisted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=66289408"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Blacklisted Sources": "={{ $('Turn them to individual records2').item.json.sender }}"
+          },
+          "matchingColumns": [
+            "Blacklisted Sources"
+          ],
+          "schema": [
+            {
+              "id": "Blacklisted Sources",
+              "displayName": "Blacklisted Sources",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1180,
+        960
+      ],
+      "id": "8a8df5f5-fccd-4ea8-a2b8-49567fdb9f7f",
+      "name": "Add Emails to Blacklist1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Double check the maybe important stuff1').item.json.message.content.EmailId }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        1820
+      ],
+      "id": "a698e834-a11c-44ad-9490-e10b2003d578",
+      "name": "Mark Evaluated Maybe as Read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2bfd19e1-810e-47b9-827c-a05e00f1956f",
+              "leftValue": "={{ $json.message.content.recommendation }}",
+              "rightValue": "Important",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        260,
+        1740
+      ],
+      "id": "ec4631a6-2777-4342-bc60-9caff6fa55ac",
+      "name": "Important/Not Quite1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an AI email evaluator. The emails you are about to double check have been identified as 'maybe important'. \n\nUse this info:\n{{ $json.snippet }} {{ $json.labels }} {{ $json.Subject }} {{ $json.sender }}\n\n\n### 3️⃣   When does “MAYBE” ⬆️ become “IMPORTANT”?\nUpgrade to `IMPORTANT` if **ANY** of these apply:\n\n| Trigger | Examples |\n|---------|----------|\n| **Explicit deadline ≤ 48 h** | “Please sign by Friday” |\n| **Direct request from manager / exec / high-value client** | “Need this report” |\n| **Financial / security impact** | “Invoice overdue”, “Account breach” |\n| **Workflow blocker** | “Waiting on your approval to proceed” |\n| **Legal / compliance notice** | “Action required to maintain…” |\n| **Personal emergency** | “Family medical update” |\n\nOutput the content of the email and a recommendation: (Important/Not Important). Be sure to include {{ $json.id }} as a column called \"EmailId\" and {{ $json.sender }} as \"SenderId\", {{ $json.snippet }} as: \"content\", {{ $json.subject }} as \"subject\""
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -60,
+        1740
+      ],
+      "id": "5281838e-4897-423d-9386-9a73ab22dcf5",
+      "name": "Double check the maybe important stuff1",
+      "credentials": {
+        "openAiApi": {
+          "id": "2bbg8yIhLwozc4bC",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        1320
+      ],
+      "id": "aa4f5e68-04fe-4b32-8c0f-a5eb04bf04b4",
+      "name": "Mark Customer Support as Read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        380,
+        1100
+      ],
+      "id": "56f5ebb8-794b-4786-b58c-d2845a6f86d9",
+      "name": "Mark Finance As Read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        420
+      ],
+      "id": "98fef1eb-25f6-4059-9a65-e3d82ddd0c57",
+      "name": "Mark Important As Read2",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "84feb2f2-3f87-4afd-b51c-1a91facef717",
+      "name": "Mark Internal As Read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "instructions": "Split emails out to a table where each id is its own record",
+        "codeGeneratedForPrompt": "Split emails out to a table where each id is its own record",
+        "jsCode": "const items = $input.all();\nconst result = items\n  .map((item) => {\n    const emails = item.json.emails.map((email, index) => {\n      return { id: item.json.uid + \"_\" + index, email };\n    });\n    return emails;\n  })\n  .flat();\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        740,
+        760
+      ],
+      "id": "40e51bfa-5c47-43e1-a664-9f61c00ae367",
+      "name": "Turn them to individual records3"
+    },
+    {
+      "parameters": {
+        "instructions": "Get the Email Id's from the content and output them in a table",
+        "codeGeneratedForPrompt": "Get the Email Id's from the content and output them in a table",
+        "jsCode": "const items = $input.all();\nconst emails = items.map((item) => item.json.message.content.emailId);\nreturn { emails };\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        520,
+        760
+      ],
+      "id": "92420638-f171-4601-b9c3-952bd7a6bd24",
+      "name": " Pull out email I.Ds1"
+    },
+    {
+      "parameters": {
+        "instructions": "Split emails out to a table where each id is its own record",
+        "codeGeneratedForPrompt": "Split emails out to a table where each id is its own record",
+        "jsCode": "const emailData = $input.all().map((item) => item.json.emailData);\nconst flattenedEmailData = [].concat.apply([], emailData);\nreturn flattenedEmailData;\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        740,
+        960
+      ],
+      "id": "4023acf2-d1d0-4ddd-8424-ab89895dc5ca",
+      "name": "Turn them to individual records2"
+    },
+    {
+      "parameters": {
+        "instructions": "Get the Email Id's and sender from the content and output them in a table",
+        "codeGeneratedForPrompt": "Get the Email Id's and sender from the content and output them in a table",
+        "jsCode": "const items = $input.all();\nconst emailData = items.map((item) => {\n  return {\n    emailId: item?.json?.message?.content?.emailId,\n    sender: item?.json?.message?.content?.sender,\n  };\n});\n\nreturn { emailData };\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        520,
+        960
+      ],
+      "id": "cbdcb613-02d1-4cf5-ada7-e73fbe445b08",
+      "name": " Pull out email ids1"
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.emailId }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        960
+      ],
+      "id": "56a59c28-49cd-43e7-a44d-d5c57eead267",
+      "name": "Not worth. Mark as read1",
+      "webhookId": "a90033c2-8bb9-4170-b608-8788e6d04c19",
+      "executeOnce": false,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c53fc6a4-a4cd-4916-8cf4-038564704837",
+              "leftValue": "={{ $json.message.content.Recommendation }}",
+              "rightValue": "Yes",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        860
+      ],
+      "id": "6f43e7ab-35c7-42d4-a069-84a0c5b4a897",
+      "name": "If its worth viewing1"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08VBDJKB5W",
+          "mode": "list",
+          "cachedResultName": "reademails_errors"
+        },
+        "text": "Error pulling emails! (walldeg2)",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -3440,
+        1400
+      ],
+      "id": "c7dff8ab-92ae-42ed-9c79-4f263291b0ac",
+      "name": "Send Error Notification3",
+      "webhookId": "4de8df2a-9f73-4b6b-8e43-424216b3cd3b",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08VBD729EC",
+          "mode": "list",
+          "cachedResultName": "emailblacklist_errors"
+        },
+        "text": "Error Found on Email Blacklist Filtering! (walldeg2)",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -2040,
+        1460
+      ],
+      "id": "6b23d842-453d-48ce-8ceb-c10d02173227",
+      "name": "Send Error Notification2",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "instructions": "Take the Blacklisted Sources and Filter The Records From the Extract Senders table where sender = blacklisted source",
+        "codeGeneratedForPrompt": "Take the Blacklisted Sources and Filter The Records From the Extract Senders table where sender = blacklisted source",
+        "jsCode": "const blacklistedSources = $input\n  .all()\n  .map((item) => item.json[\"Blacklisted Sources\"]);\nconst senders = $(\"Extract Senders1\")\n  .all()\n  .map((item) => item.json);\n\nconst filteredRecords = senders.filter(\n  (sender) => !blacklistedSources.includes(sender.sender),\n);\n\nreturn filteredRecords;\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        -2360,
+        1180
+      ],
+      "id": "89e6f122-fda8-41ee-875e-27abf6b2f7a6",
+      "name": "Filter Blacklisted1",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract sender email addresses from the From field\nconst items = $input.all();\n\nreturn items.map(item => {\n  const fromField = item.json.From || item.json.from || '';\n  let sender = '';\n  \n  // Extract email from formats like \"Name <email@domain.com>\" or just \"email@domain.com\"\n  const emailMatch = fromField.match(/<([^>]+)>/);\n  if (emailMatch) {\n    sender = emailMatch[1].toLowerCase().trim();\n  } else if (fromField.includes('@')) {\n    sender = fromField.toLowerCase().trim();\n  }\n  \n  return {\n    json: {\n      ...item.json,\n      sender: sender,\n      subject: item.json.Subject || item.json.subject || 'No Subject'\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3440,
+        1220
+      ],
+      "id": "37ee82b3-bbf7-4cd7-9b17-71a5d8fa580e",
+      "name": "Extract Senders1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -560,
+        1360
+      ],
+      "id": "d1ad40fd-1508-4f72-8e14-c5e7b248baf0",
+      "name": "4o mini1",
+      "credentials": {
+        "openAiApi": {
+          "id": "2bbg8yIhLwozc4bC",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 734620047,
+          "mode": "list",
+          "cachedResultName": "Whitelisted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=734620047"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -2080,
+        980
+      ],
+      "id": "4a090ac1-b908-45d0-b8bf-35137be97deb",
+      "name": "Get Whitelisted1",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws",
+          "mode": "list",
+          "cachedResultName": "Email Filter Lists",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 66289408,
+          "mode": "list",
+          "cachedResultName": "Blacklisted",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-zOsi0H__UCccASLnenVDJWEryTXfmX0TH2NkIgfWws/edit#gid=66289408"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -3240,
+        1220
+      ],
+      "id": "c0079312-5d7e-4426-922d-5db22ad8195c",
+      "name": "Get Blacklisted1",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xT3d1PSJgyB3FXxk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are the Promotions Analyst in an AI email management system.\n Your role is to review incoming promotional emails, summarize the offer, and decide whether it's worth pursuing further. This should be a 1 in 1000 chance of being a yes though, this is most likely spam\nInput:\n {{ $('Evaluate Remaining Emails1').item.json.snippet }} from:{{ $('Evaluate Remaining Emails1').item.json.From }}\nOutput:\n • Summary – What is being offered? \n • Recommendation (Yes/No followed by no more than 10 words )\n\nMaintain the Email ID as part of the output table {{ $json.id }} as a column called 'emailId'. Also {{ $json.sender }} as 'sender'"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -20,
+        860
+      ],
+      "id": "35d7a7af-dbcf-4724-8473-4b5b9f2c0608",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "2bbg8yIhLwozc4bC",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "747874eb-2bed-4537-9c70-d908b6b7c463"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Not Empty"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8e6ccf8d-4ca0-42aa-bc7c-a8d8f0636acd",
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Empty"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1480,
+        1100
+      ],
+      "id": "c82304d0-ac5f-4a49-8f55-bfbb785222f7",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URLNBRHT",
+          "mode": "list",
+          "cachedResultName": "email_classification_errors"
+        },
+        "text": "Error Classifying Emails!",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -400,
+        1420
+      ],
+      "id": "2e0437f3-7d65-4f50-b44c-2249e2917a92",
+      "name": "Send Error Notification",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> customer service",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        1560
+      ],
+      "id": "34b2f5b1-6813-443c-b04d-e5e7b0dde660",
+      "name": "Send Error Notification1",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> maybe pile",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1060,
+        1920
+      ],
+      "id": "0623324e-49da-4055-8f08-4b0b0bc971e5",
+      "name": "Send Error Notification4",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> finance",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        600,
+        1360
+      ],
+      "id": "8fad754c-c12e-444b-ba02-cb8263ac6bac",
+      "name": "Send Error Notification5",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> marketing(important)",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1180,
+        800
+      ],
+      "id": "f06c2e29-c9b6-4d1b-ba12-8f9c7d482378",
+      "name": "Send Error Notification6",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> important",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        700
+      ],
+      "id": "a9cd1535-70e1-4b50-ab1e-de1771b56344",
+      "name": "Send Error Notification7",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> internal",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        240
+      ],
+      "id": "4e364244-d380-47e5-8bcf-781d141ee6ea",
+      "name": "Send Error Notification8",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08URP6QHL5",
+          "mode": "list",
+          "cachedResultName": "email_send_errors"
+        },
+        "text": "Error Sending Emails! georgewallden96 -> whitelisted",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -960,
+        1040
+      ],
+      "id": "05d26d2d-a2cf-4e84-968f-646b3df3f515",
+      "name": "Send Error Notification9",
+      "webhookId": "7503bb1c-6f68-440d-a95c-76c20c8aba2f",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "05et4E1vjwq4U85y",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -4100,
+        1260
+      ],
+      "id": "88577f4f-98eb-4864-b476-4f188d7cbc26",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "87ITNUCo2CmX9F1P",
+          "name": "georgewallden96@gmail.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Send Email to Outlook (Maybe Important)5": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Incoming10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Important)6": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Incoming5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Unread from georgewallden96": {
+      "main": [
+        [
+          {
+            "node": "Extract Senders1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Just Whitelisted Emails1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Remaining Emails (No whitlisted/blacklisted)1": {
+      "main": [
+        [
+          {
+            "node": "Evaluate Remaining Emails1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Important)5": {
+      "main": [
+        [
+          {
+            "node": "Get Remaining Emails (No whitlisted/blacklisted)1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Important As Read3": {
+      "main": [
+        [
+          {
+            "node": "Send Email to Outlook (Important)5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate Remaining Emails1": {
+      "main": [
+        [
+          {
+            "node": "Send Email to Outlook (Internal)1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark Internal As Read1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email to Outlook (Important)3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark Important As Read2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email to Outlook (Finance)1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark Finance As Read1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email to Outlook (Customer Support)1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark Customer Support as Read1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Double check the maybe important stuff1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separate Blacklisted1": {
+      "main": [
+        [
+          {
+            "node": "Gmail1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail1": {
+      "main": [
+        [
+          {
+            "node": "Mark Blacklisted As read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Blacklisted As read1": {
+      "main": [
+        [
+          {
+            "node": "Filter Blacklisted1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Internal)1": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Whitelisted2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Important)3": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Whitelisted3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Finance)1": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Incoming7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Customer Support)1": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Incoming6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email to Outlook (Maybe Important)1": {
+      "main": [
+        [
+          {
+            "node": "Send message of new Email source under maybe1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Emails to Incoming4": {
+      "main": [
+        [
+          {
+            "node": "Send Email to Outlook (Maybe Important)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Evaluated Maybe as Read1": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Incoming4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Important/Not Quite1": {
+      "main": [
+        [
+          {
+            "node": "Send Email to Outlook (Important)6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark Evaluated Maybe as Read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Double check the maybe important stuff1": {
+      "main": [
+        [
+          {
+            "node": "Important/Not Quite1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Turn them to individual records3": {
+      "main": [
+        [
+          {
+            "node": "Send Email to Outlook (Maybe Important)5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    " Pull out email I.Ds1": {
+      "main": [
+        [
+          {
+            "node": "Turn them to individual records3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Turn them to individual records2": {
+      "main": [
+        [
+          {
+            "node": "Not worth. Mark as read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    " Pull out email ids1": {
+      "main": [
+        [
+          {
+            "node": "Turn them to individual records2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Not worth. Mark as read1": {
+      "main": [
+        [
+          {
+            "node": "Add Emails to Blacklist1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If its worth viewing1": {
+      "main": [
+        [
+          {
+            "node": " Pull out email I.Ds1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": " Pull out email ids1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Blacklisted1": {
+      "main": [
+        [
+          {
+            "node": "Get Whitelisted1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Senders1": {
+      "main": [
+        [
+          {
+            "node": "Get Blacklisted1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4o mini1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Evaluate Remaining Emails1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Whitelisted1": {
+      "main": [
+        [
+          {
+            "node": "Get Just Whitelisted Emails1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Blacklisted1": {
+      "main": [
+        [
+          {
+            "node": "Separate Blacklisted1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "If its worth viewing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Mark Important As Read3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Remaining Emails (No whitlisted/blacklisted)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Unread from georgewallden96",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "0a9d1d6e-02dc-4f8d-af2f-61cc4af6a899",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b20d397dbfe697ae176c1cb26276e50ed7eeb2dd094b5629944bb901e8afccb1"
+  },
+  "id": "ujou00JtoAJwWRta",
+  "tags": [
+    {
+      "createdAt": "2025-06-01T11:37:29.048Z",
+      "updatedAt": "2025-06-01T11:37:29.048Z",
+      "id": "95xOr6iTXGtUEXmj",
+      "name": "job-automation"
+    }
+  ]
+}
