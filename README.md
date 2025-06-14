@@ -15,7 +15,7 @@ This N8N workflow connects to my Gmail account via API and runs on a schedule. I
 ## Key Technologies
 -   **N8N:** The core automation platform.
 -   **Gmail API:** For reading and managing emails.
--   **[Your Notification Service, e.g., Pushover/Discord/Slack API]:** For sending real-time alerts.
+-   **Slack API:** For sending real-time alerts.
 
 ## Visualization
 Here is a screenshot of the workflow canvas in N8N:
